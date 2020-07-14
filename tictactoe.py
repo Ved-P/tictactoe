@@ -94,7 +94,16 @@ def terminal(board):
     """
     Returns True if game is over, False otherwise.
     """
-    raise NotImplementedError
+
+    if winner(board) != None:
+        return True
+
+    for row in board:
+        for space in row:
+            if space == EMPTY:
+                return False
+
+    return True
 
 
 def utility(board):
