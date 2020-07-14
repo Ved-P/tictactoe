@@ -35,18 +35,18 @@ while True:
         # Draw title
         title = largeFont.render("Play Tic-Tac-Toe", True, white)
         titleRect = title.get_rect()
-        titleRect.center = ((width / 2), 50)
+        titleRect.center = (int(width / 2), 50)
         screen.blit(title, titleRect)
 
         # Draw buttons
-        playXButton = pygame.Rect((width / 8), (height / 2), width / 4, 50)
+        playXButton = pygame.Rect(int(width / 8), int(height / 2), int(width / 4), 50)
         playX = mediumFont.render("Play as X", True, black)
         playXRect = playX.get_rect()
         playXRect.center = playXButton.center
         pygame.draw.rect(screen, white, playXButton)
         screen.blit(playX, playXRect)
 
-        playOButton = pygame.Rect(5 * (width / 8), (height / 2), width / 4, 50)
+        playOButton = pygame.Rect(5 * int(width / 8), int(height / 2), int(width / 4), 50)
         playO = mediumFont.render("Play as O", True, black)
         playORect = playO.get_rect()
         playORect.center = playOButton.center
@@ -75,9 +75,9 @@ while True:
             row = []
             for j in range(3):
                 rect = pygame.Rect(
-                    tile_origin[0] + j * tile_size,
-                    tile_origin[1] + i * tile_size,
-                    tile_size, tile_size
+                    int(tile_origin[0] + j * tile_size),
+                    int(tile_origin[1] + i * tile_size),
+                    int(tile_size), int(tile_size)
                 )
                 pygame.draw.rect(screen, white, rect, 3)
 
@@ -105,7 +105,7 @@ while True:
             title = f"Computer thinking..."
         title = largeFont.render(title, True, white)
         titleRect = title.get_rect()
-        titleRect.center = ((width / 2), 30)
+        titleRect.center = (int(width / 2), 30)
         screen.blit(title, titleRect)
 
         # Check for AI move
