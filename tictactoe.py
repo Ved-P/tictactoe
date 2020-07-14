@@ -113,7 +113,7 @@ def utility(board):
 
     if winner(board) == X:
         return 1
-    else if winner(board) == O:
+    elif winner(board) == O:
         return -1
     else if terminal(board):
         return 0
@@ -123,7 +123,11 @@ def minimax(board):
     """
     Returns the optimal action for the current player on the board.
     """
-    raise NotImplementedError
+
+    if player(board) == X:
+        return max_value(board)
+    else
+        return min_value(board)
 
 def max_value(board):
 
