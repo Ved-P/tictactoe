@@ -4,6 +4,8 @@ import time
 
 import tictactoe as ttt
 
+sys.setrecursionlimit(10**6)
+
 pygame.init()
 size = width, height = 600, 400
 
