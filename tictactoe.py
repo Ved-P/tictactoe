@@ -62,7 +62,7 @@ def result(board, action):
     result_board = list(board)
 
     if result_board[action[0]][action[1]] == EMPTY:
-        result_board[action[0]][action[1]] == player(board)
+        result_board[action[0]][action[1]] = player(board)
         return result_board
     else:
         raise Exception
