@@ -127,7 +127,7 @@ def minimax(board):
     if player(board) == X:
 
         if terminal(board):
-            return utility(board)
+            return None
 
         value = -100
         best_action = None
@@ -143,7 +143,7 @@ def minimax(board):
     else:
 
         if terminal(board):
-            return utility(board)
+            return None
 
         value = 100
         best_action = None
