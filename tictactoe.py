@@ -149,7 +149,7 @@ def minimax(board):
         best_action = None
 
         for action in actions(board):
-            new_value = min_value(result(board, action))
+            new_value = max_value(result(board, action))
             if new_value < value:
                 value = new_value
                 best_action = action
@@ -178,7 +178,7 @@ def min_value(board):
     value = 100
 
     for action in actions(board):
-        new_value = min_value(result(board, action))
+        new_value = max_value(result(board, action))
         if new_value < value:
             value = new_value
 
