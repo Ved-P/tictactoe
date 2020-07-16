@@ -48,7 +48,7 @@ def actions(board):
 
     for i in range(3):
         for j in range(3):
-            if board[i][j] == EMPTY:
+            if board[i][j] is EMPTY:
                 actions.add((i, j))
 
     return actions
@@ -59,9 +59,9 @@ def result(board, action):
     Returns the board that results from making move (i, j) on the board.
     """
 
-    result_board = list(board)
+    result_board = [list.copy(board[0]), list.copy(board[1]), list.copy(board[2])]
 
-    if result_board[action[0]][action[1]] == EMPTY:
+    if result_board[action[0]][action[1]] is EMPTY:
         result_board[action[0]][action[1]] = player(board)
         return result_board
     else:
@@ -74,17 +74,17 @@ def winner(board):
     """
 
     for row in range(3):
-        if board[row][0] == board[row][1] and board[row][1] == board[row][2] and board[row][2] != EMPTY:
+        if board[row][0] == board[row][1] and board[row][1] == board[row][2] and board[row][2] is not EMPTY:
             return board[row][0]
 
     for col in range(3):
-        if board[0][col] == board[1][col] and board[1][col] == board[2][col] and board[2][col] != EMPTY:
+        if board[0][col] == board[1][col] and board[1][col] == board[2][col] and board[2][col] is not EMPTY:
             return board[0][col]
 
-    if board[0][0] == board[1][1] and board[1][1] == board[2][2] and board[2][2] != EMPTY:
+    if board[0][0] == board[1][1] and board[1][1] == board[2][2] and board[2][2] is not EMPTY:
         return board[0][0]
 
-    if board[0][2] == board[1][1] and board[1][1] == board[2][0] and board[2][0] != EMPTY:
+    if board[0][2] == board[1][1] and board[1][1] == board[2][0] and board[2][0] is not EMPTY:
         return board[0][2]
 
     return None
@@ -100,7 +100,7 @@ def terminal(board):
 
     for row in board:
         for space in row:
-            if space == EMPTY:
+            if space is EMPTY:
                 return False
 
     return True
@@ -133,7 +133,8 @@ def minimax(board):
         best_action = None
 
         for action in actions(board):
-            new_value = min_value(result(board, action))
+            check_board = result(board, action)
+            new_value = min_value(check_board)
             if new_value > value:
                 value = new_value
                 best_action = action
@@ -149,7 +150,8 @@ def minimax(board):
         best_action = None
 
         for action in actions(board):
-            new_value = max_value(result(board, action))
+            check_board = result(board, action)
+            new_value = max_value(check_board)
             if new_value < value:
                 value = new_value
                 best_action = action
